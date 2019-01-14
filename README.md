@@ -1,29 +1,11 @@
-# ui-input
+# Realtime Vue UI Library
 
-## Project setup
-```
-npm install
-```
+This is the collected library of Vue UI library. The purpose is to help create realtime oriented UI library.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Components
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Textinput Component
 
-### Run your tests
-```
-npm run test
-```
+![Input Text Gif](examples/input-text.mov.gif)
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This component will create an text input, that will add a changed class when the values has changed. When the user presses the enter key, it will remove the changed class and set the input out of focus.

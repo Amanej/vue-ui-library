@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <textInput 
+      placeholder="Enter my placeholder text" 
+      initialValue=""
+      :customStyle="{borderRadius: '4px'}"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import textInput from './components/textInput.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    textInput
   }
 }
 </script>

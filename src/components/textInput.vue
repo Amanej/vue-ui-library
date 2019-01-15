@@ -70,13 +70,14 @@ export default {
 
 <style lang="scss">
 label {
-    min-width:                  250px;
+    //min-width:                  250px;
     transition:                 0.4s;
     input {
         //padding:                5px;
         font-size:              16px;
         padding:                12px;
-        min-width:              250px;
+        //min-width:              250px;
+        width: 100%;
         transition:             0.4s;
         border:                 1px solid lightgrey;
         &.changed {

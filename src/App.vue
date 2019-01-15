@@ -1,20 +1,27 @@
 <template>
   <div id="app">
-    <textInput 
-      placeholder="Enter my placeholder text" 
-      initialValue=""
-      :customStyle="{borderRadius: '4px'}"
-    />
+    <div class="container"> <!-- Container -->
+      <textInput 
+        placeholder="Enter my placeholder text" 
+        initialValue=""
+        :customStyle="{borderRadius: '4px'}"
+      />
+    </div>
+    <div class="container"> <!-- Container -->
+      <selectInput />
+    </div>
   </div>
 </template>
 
 <script>
 import textInput from './components/textInput.vue'
+import selectInput from './components/selectInput.vue'
 
 export default {
   name: 'app',
   components: {
-    textInput
+    textInput,
+    selectInput
   }
 }
 </script>
@@ -27,5 +34,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+div.container {
+      margin: 20px auto;
+      width: 250px;
 }
 </style>

@@ -13,3 +13,11 @@ This component will create an text input, that will add a changed class when the
 ### Selectinput Componenet
 
 This is a work in progress custom select input component.
+
+Desired features
+
+1. Custom dropdown
+2. Dropdown with input - Custom input
+    *  Filter options
+    *  Tabulator for options
+

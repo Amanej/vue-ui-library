@@ -1,6 +1,7 @@
 <template>
     <div class="selectInput" :class="{open: open}">
-        <div class="selected" @click="toggleSelect"> <!-- Selected container -->
+        <!-- Standard select box -->
+        <div v-if="!withInput" class="selected" @click="toggleSelect"> <!-- Selected container -->
             <span v-if="!selectedOpt">Select an option</span>
             <span v-if="selectedOpt">{{selectedOpt.label}}</span>
             <label for="toggleSelect">
@@ -8,8 +9,17 @@
                 <input type="checkbox" v-model="open" id="toggleSelect" name="toggleSelect" />
             </label>
         </div>
+        <!-- Input select box -->
+        <div v-if="withInput" class="selected" @click="toggleSelect">
+            <input type="text" name="selectBoxInput" id="selectBoxInput" placeholder="Select an option" v-model="query" />
+            <label for="toggleSelect">
+                <i :class="{open: open}">&larr;</i><!-- icon -->
+                <input type="checkbox" v-model="open" id="toggleSelect" name="toggleSelect" />
+            </label>
+        </div>
+
         <ul class="options"> <!-- Options -->
-            <li v-for="option in options" :key="option.key" @click="setSelectedOption(option)">
+            <li v-for="option in filteredOptions" :key="option.key" @click="setSelectedOption(option)">
                 {{option.label}}
             </li>
         </ul>
@@ -19,9 +29,50 @@
 <script>
 export default {
     name: 'selectInput',
+    props: [
+        'withInput'
+    ],
+        data() {
+        return {
+            query: '',
+            open: false,
+            selectedOpt: null,
+            options: [
+                {
+                    label: 'Option 1 - Oslo',
+                    key: 'opt1',
+                    selected: false
+                },
+                {
+                    label: 'Option 2 - Trondheim',
+                    key: 'opt2',
+                    selected: false
+                },
+                {
+                    label: 'Option 3 - Bergen',
+                    key: 'opt3',
+                    selected: false
+                },
+                {
+                    label: 'Option 4 - Stavanger',
+                    key: 'opt4',
+                    selected: false
+                }
+            ]
+        }
+    },
     computed: {
         selectedOption() {
             return this.options.find(o => o.selected)
+        },
+        filteredOptions() {
+            if(this.query) {
+                const query = this.query.toLowerCase();
+                console.log('query ',query);
+                return this.options.filter(o => o.label.toLowerCase().includes(query))
+            } else {
+                return this.options;
+            }
         }
     },
     methods: {
@@ -31,34 +82,9 @@ export default {
         },
         toggleSelect() {
             this.open = !this.open;
-        }
-    },
-    data() {
-        return {
-            open: false,
-            selectedOpt: null,
-            options: [
-                {
-                    label: 'Option 1',
-                    key: 'opt1',
-                    selected: false
-                },
-                {
-                    label: 'Option 2',
-                    key: 'opt2',
-                    selected: false
-                },
-                {
-                    label: 'Option 3',
-                    key: 'opt3',
-                    selected: false
-                },
-                {
-                    label: 'Option 4',
-                    key: 'opt4',
-                    selected: false
-                }
-            ]
+        },
+        keyUpInput(e) {
+            console.log('keyUpInput ',e)
         }
     }
 }
@@ -96,6 +122,12 @@ div.selectInput {
             }
             input[type="checkbox"] {
                 display: none;
+            }
+        }
+        input[type="text"] {
+            border: none;
+            &:focus, &:active {
+                outline: none;
             }
         }
     }

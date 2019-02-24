@@ -10,6 +10,9 @@
     <div class="container"> <!-- Container -->
       <selectInput />
     </div>
+    <div class="container"> <!-- Container -->
+      <selectInput :withInput="true" />
+    </div>
   </div>
 </template>
 

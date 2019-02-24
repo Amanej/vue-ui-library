@@ -16,8 +16,8 @@ This is a work in progress custom select input component.
 
 Desired features
 
-1. Custom dropdown
+1. ~~Custom dropdown~~
 2. Dropdown with input - Custom input
     *  Filter options
     *  Tabulator for options
-
+    *  Make CSS / Design more customizable

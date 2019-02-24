@@ -1,10 +1,10 @@
 <template>
     <div class="selectInput" :class="{open: open}">
-        <div class="selected"> <!-- Selected container -->
+        <div class="selected" @click="toggleSelect"> <!-- Selected container -->
             <span v-if="!selectedOpt">Select an option</span>
             <span v-if="selectedOpt">{{selectedOpt.label}}</span>
             <label for="toggleSelect">
-                <i>+</i><!-- icon -->
+                <i :class="{open: open}"><</i><!-- icon -->
                 <input type="checkbox" v-model="open" id="toggleSelect" name="toggleSelect" />
             </label>
         </div>
@@ -28,6 +28,9 @@ export default {
         setSelectedOption(opt) {
             this.selectedOpt = opt;
             this.open = false;
+        },
+        toggleSelect() {
+            this.open = !this.open;
         }
     },
     data() {
@@ -75,6 +78,7 @@ div.selectInput {
         display:            flex;
         width: 100%;
         justify-content:    center;
+        cursor:             pointer;
         span {
             padding-left:   10px;
         }
@@ -84,6 +88,11 @@ div.selectInput {
             i {
                 font-style:     normal;
                 color:          lightgrey;
+                display: block;
+                transition: 1s;
+                &.open {
+                    transform: rotate(-90deg);
+                }
             }
             input[type="checkbox"] {
                 display: none;

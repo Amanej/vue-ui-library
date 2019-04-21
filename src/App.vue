@@ -6,11 +6,6 @@
         initialValue=""
         :customStyle="firstTextInputStyle"
       />
-      <textInput 
-        placeholder="Save something new" 
-        initialValue="Previous input value"
-        :customStyle="secondTextInputStyle"
-      />
     </div>
     <div class="container"> <!-- Container -->
       <selectInput />
@@ -22,8 +17,8 @@
 </template>
 
 <script>
-import textInput from './components/textInput.vue'
-import selectInput from './components/selectInput.vue'
+import textInput from './components/TextInput.vue'
+import selectInput from './components/SelectInput.vue'
 
 const firstTextInputStyle = {
   input: {

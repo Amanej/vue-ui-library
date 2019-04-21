@@ -40,12 +40,16 @@ export default {
         }
     },
     props: {
+        /**
+		 * Sets the placeholder
+		 */
         placeholder: {
             default: 'Enter your info',
             type: String,
             required: false
         },
         initialValue: {
+            default: '',
             type: String,
             required: true
         },
@@ -94,3 +98,8 @@ input {
 }
 </style>
 
+<!--
+<docs>
+This is a textinput that will listen.
+</docs>
+-->

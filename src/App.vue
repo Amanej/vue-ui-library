@@ -4,7 +4,12 @@
       <textInput 
         placeholder="Enter my placeholder text" 
         initialValue=""
-        :customStyle="{borderRadius: '4px'}"
+        :customStyle="firstTextInputStyle"
+      />
+      <textInput 
+        placeholder="Save something new" 
+        initialValue="Previous input value"
+        :customStyle="secondTextInputStyle"
       />
     </div>
     <div class="container"> <!-- Container -->
@@ -20,11 +25,35 @@
 import textInput from './components/textInput.vue'
 import selectInput from './components/selectInput.vue'
 
+const firstTextInputStyle = {
+  input: {
+    borderRadius: '4px'
+  },
+  label: {}
+};
+
+const secondTextInputStyle = {
+  input: {
+    borderRadius: '4px'
+  },
+  label: {
+    marginTop: '4px'
+  }
+};
+
 export default {
   name: 'app',
   components: {
     textInput,
     selectInput
+  },
+  computed: {
+    firstTextInputStyle() {
+      return firstTextInputStyle
+    },
+    secondTextInputStyle() {
+      return secondTextInputStyle
+    }
   }
 }
 </script>

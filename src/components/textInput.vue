@@ -1,8 +1,8 @@
 <template>
-    <label>
+    <label :style="customStyle.label">
         <input 
             :class="{changed: changed}"
-            :style="customCSS"
+            :style="customStyle.input"
             type="text" 
             name="textInput"
             v-on:keyup.enter="saveInput"
@@ -19,15 +19,10 @@
 export default {
     name: 'textInput',
     created: function() {
-        //console.log('initialValue ',this.initialValue);
+        this.init = this.initialValue;
         this.value = this.initialValue;
     },
     computed: {
-        customCSS() {
-            if(this.customStyle) {
-                return this.customStyle
-            }
-        },
         changed() {
             return this.value !== this.init
         }

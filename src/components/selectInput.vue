@@ -11,7 +11,7 @@
         </div>
         <!-- Input select box -->
         <div v-if="withInput" class="selected" @click="toggleSelect">
-            <input type="text" name="selectBoxInput" id="selectBoxInput" placeholder="Select an option" v-model="query" />
+            <input type="text" name="selectBoxInput" id="selectBoxInput" placeholder="Search for option" v-model="query" />
             <label for="toggleSelect">
                 <i :class="{open: open}">&larr;</i><!-- icon -->
                 <input type="checkbox" v-model="open" id="toggleSelect" name="toggleSelect" />
@@ -32,7 +32,7 @@ export default {
     props: [
         'withInput'
     ],
-        data() {
+    data:() => {
         return {
             query: '',
             open: false,

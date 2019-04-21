@@ -18,6 +18,6 @@ Desired features
 
 1. ~~Custom dropdown~~
 2. Dropdown with input - Custom input
-    *  Filter options
+    *  ~~Filter options~~
     *  Tabulator for options
     *  Make CSS / Design more customizable

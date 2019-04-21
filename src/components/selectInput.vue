@@ -5,7 +5,7 @@
             <span v-if="!selectedOpt">Select an option</span>
             <span v-if="selectedOpt">{{selectedOpt.label}}</span>
             <label for="toggleSelect">
-                <i :class="{open: open}"><</i><!-- icon -->
+                <i :class="{open: open}"> &larr; </i><!-- icon -->
                 <input type="checkbox" v-model="open" id="toggleSelect" name="toggleSelect" />
             </label>
         </div>

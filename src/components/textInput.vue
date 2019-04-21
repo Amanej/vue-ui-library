@@ -5,7 +5,8 @@
             :style="customCSS"
             type="text" 
             name="textInput"
-            v-on:keyup.enter="saveInput" 
+            v-on:keyup.enter="saveInput"
+            v-on:blur="saveCurrentValue"
             :placeholder="placeholder" 
             v-model="value"
             ref="textInput"
@@ -32,10 +33,15 @@ export default {
         }
     },
     methods: {
-        saveInput(e) {
-            //console.log(e);
-            this.$refs.textInput.blur();
+        saveCurrentValue() {
             this.init = this.value;
+        },
+        blurInput() {
+            this.$refs.textInput.blur();
+        },
+        saveInput() {
+            this.blurInput;
+            this.saveCurrentValue();
         }
     },
     props: {
@@ -68,24 +74,28 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 label {
     //min-width:                  250px;
     transition:                 0.4s;
-    input {
-        //padding:                5px;
-        font-size:              16px;
-        padding:                12px;
-        //min-width:              250px;
-        width: 100%;
-        transition:             0.4s;
-        border:                 1px solid lightgrey;
-        &.changed {
-            color: red;
-        }
-        &:focus {
-            outline: none;
-        }
+    width: 100%;
+    display: flex;
+}
+input {
+    //padding:                5px;
+    font-size:              16px;
+    padding:                12px;
+    //min-width:              250px;
+    width: 100%;
+    transition:             0.4s;
+    border:                 1px solid lightgrey;
+    border-radius: 4px;
+    &.changed {
+        color: red;
+    }
+    &:focus {
+        outline: none;
     }
 }
 </style>
+

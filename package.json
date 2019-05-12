@@ -10,7 +10,8 @@
     "styleguide:build": "vue-cli-service styleguidist:build"
   },
   "dependencies": {
-    "vue": "^2.5.21"
+    "vue": "^2.5.21",
+    "vue-styleguidist": "^3.13.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.3.0",

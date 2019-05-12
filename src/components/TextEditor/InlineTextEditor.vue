@@ -12,15 +12,21 @@
 
         <!--
         -->
-        <h3>Preview</h3>
+        <h3>Raw Preview</h3>
+        <div>
+            {{input}}
+        </div>
+        <h3>Raw Preview - HTML Rendered</h3>
         <div v-html="input"></div>
-        <h3>Preview</h3>
+        <h3>HTML Render generated text</h3>
         <div v-html="inputHTMLRendered"></div>
+        <div v-html="inputHTMLRendered" contenteditable></div>
     </div>
 </template>
 
 <script>
 export default {
+    name: "Inline text editor",
     data() {
         return {
             input: '',

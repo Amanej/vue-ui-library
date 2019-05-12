@@ -1,6 +1,6 @@
 module.exports = {
 	// set your styleguidist configuration here
-	title: 'Amans Vue UI Library',
+	title: 'Default Style Guide',
 	components: 'src/components/**/[A-Z]*.vue',
 	defaultExample: true
 	// sections: [

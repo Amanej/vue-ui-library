@@ -1,8 +1,8 @@
 <template>
-    <label :style="customStyle.label">
+    <label :style="customStyle ? customStyle.label : ''">
         <input 
             :class="{changed: changed}"
-            :style="customStyle.input"
+            :style="customStyle ? customStyle.input : ''"
             type="text" 
             name="textInput"
             v-on:keyup.enter="saveInput"
@@ -16,30 +16,20 @@
 
 <script>
 /* eslint-disable */
+/**
+ * The text input. Please show me props.
+ */
 export default {
-    name: 'textInput',
-    created: function() {
-        this.init = this.initialValue;
-        this.value = this.initialValue;
-    },
-    computed: {
-        changed() {
-            return this.value !== this.init
-        }
-    },
-    methods: {
-        saveCurrentValue() {
-            this.init = this.value;
-        },
-        blurInput() {
-            this.$refs.textInput.blur();
-        },
-        saveInput() {
-            this.blurInput;
-            this.saveCurrentValue();
-        }
-    },
+    name: 'TextInput',
     props: {
+        /**
+         * Sets the initial value
+         */
+        initialValue: {
+            default: '',
+            type: String,
+            required: false
+        },
         /**
 		 * Sets the placeholder
 		 */
@@ -48,15 +38,16 @@ export default {
             type: String,
             required: false
         },
-        initialValue: {
-            default: '',
-            type: String,
-            required: true
-        },
+        /**
+		 * Sets the custom style
+		 */
         customStyle: {
             type: Object,
             required: false
         },
+        /**
+		 * Sets the changed style
+		 */
         changedStyle: {
             type: Object,
             required: false
@@ -69,7 +60,34 @@ export default {
                 value: ''
             }
         )
-    }
+    },
+    created: function() {
+        this.init = this.initialValue;
+        this.value = this.initialValue;
+    },
+    computed: {
+        changed() {
+            return this.value !== this.init
+        }
+    },
+    methods: {
+        saveCurrentValue() {
+            this.init = this.value;
+            /***
+             * This is to catch the save on blur.
+             * @event {Event}
+             * @type String
+             */
+            this.$emit('input',this.value);
+        },
+        blurInput() {
+            this.$refs.textInput.blur();
+        },
+        saveInput() {
+            this.blurInput;
+            this.saveCurrentValue();
+        }
+    },
 }
 </script>
 
@@ -97,9 +115,3 @@ input {
     }
 }
 </style>
-
-<!--
-<docs>
-This is a textinput that will listen.
-</docs>
--->

@@ -26,7 +26,7 @@
 
 <script>
 export default {
-    name: "Inline text editor",
+    name: "InlineTextEditor",
     data() {
         return {
             input: '',

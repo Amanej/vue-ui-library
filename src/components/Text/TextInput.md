@@ -25,3 +25,9 @@ This is a textinput that will listen.
         initialValue=""
     />
 ```
+
+### TODOS
+
+1. Add v-model
+2. Make v-model work with realtime paradigm
+

@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import textInput from './components/TextInput.vue'
-import selectInput from './components/SelectInput.vue'
+import textInput from './components/Text/TextInput'
+import selectInput from './components/Select/SelectInput'
 
 const firstTextInputStyle = {
   input: {
